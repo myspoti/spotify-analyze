@@ -9,4 +9,3 @@ export default function Home() {
 
   return <button onClick={handleLogin}>login login page</button>;
 }
-// http://localhost:3000/api/auth/callback/spotify
