@@ -12,8 +12,6 @@ export const authOptions: NextAuthOptions = {
       authorization: {
         params: { scope },
       },
-      //   authorization:
-      //     "https://accounts.spotify.com/authorize?scope=user-read-email,playlist-read-private,playlist-modify-private,playlist-modify-public",
     }),
   ],
   secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,

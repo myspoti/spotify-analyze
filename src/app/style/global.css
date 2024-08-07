@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply full-screen text-gray-700;
+    @apply bg-white lg:bg-[#ffeeee] xl:bg-[#ffeeee];
+    font-family: "Pretendard", sans-serif, system-ui;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+    -webkit-touch-callout: none;
+  }
+
+  body {
+    @apply full-screen;
+    @apply no-scrollbar;
+
+    #app {
+      @apply full-screen;
+      @apply bg-white lg:bg-[#fff2f2] xl:bg-[#fff2f2];
+      background-image: url("/imgs/bg.png");
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  }
+
+  #ch-plugin-script-iframe {
+    margin-top: 0 !important;
+  }
+
+  input {
+    &:disabled {
+      -webkit-text-fill-color: inherit;
+      opacity: 1;
+    }
+  }
+}
+
+@layer components {
+  .full-screen {
+    width: 100%;
+    height: 100vh;
+    @supports (-webkit-touch-callout: none) {
+      height: -webkit-fill-available;
+      max-height: -webkit-fill-available;
+    }
+
+    .gradient-skeleton {
+      @apply animate-gradient bg-gradient-to-r from-[#ddd] via-[#e8e8e8]  to-[#ddd] bg-[length:300%_auto];
+    }
+  }
+
+  .layout {
+    svg {
+      path[fill],
+      circle[fill],
+      rect[fill] {
+        fill: inherit;
+      }
+
+      path[stroke],
+      circle[stroke],
+      rect[stroke] {
+        stroke: inherit;
+      }
+    }
+  }
+
+  .inner-full-screen {
+    @apply flex h-full w-full flex-col pt-44 text-center;
+    &[data-header="false"] {
+      padding-top: 0;
+    }
+  }
+
+  .gradient-bias {
+    @apply from-primary-main;
+    @apply to-secondary-dark;
+  }
+
+  .fluid {
+    @apply w-full;
+  }
+
+  .outlined {
+    background-color: transparent;
+    border-width: 1px;
+  }
+
+  .circle {
+    @apply rounded-full;
+  }
+
+  .talk-bubble {
+    @apply relative;
+    @apply px-32 py-8;
+    @apply rounded-full;
+    @apply bg-primary-light1;
+
+    &::after {
+      @apply absolute bottom-[-15px];
+      @apply border-x-[8px] border-t-[20px];
+      @apply border-x-transparent border-t-primary-light1;
+      left: calc(50% - 8px);
+      content: "";
+    }
+  }
+
+  .margin-center {
+    /* margin: 0 auto */
+    @apply mx-auto my-0;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .one-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 20px;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+  .custom-list-disc::marker {
+    font-size: 0.6rem;
+  }
+
+  .button-shadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .fade-in {
+    animation: fadeIn 325ms ease-in-out;
+  }
+  .fade-in-dim {
+    @apply fade-in full-screen absolute top-0 left-0 bg-[#2f2f2f]/70;
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .fade-out {
+    animation: fadeOut 325ms ease-in-out;
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      transform: translate3d(0, 100%, 0);
+    }
+    100% {
+      transform: translateZ(0);
+    }
+  }
+  .fade-in-up {
+    animation: fadeInUp 325ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  @keyframes fadeOutDown {
+    0% {
+      transform: translateZ(0);
+    }
+    100% {
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+  .fade-out-down {
+    animation: fadeOutDown 325ms cubic-bezier(0, 0, 0.2, 1);
+  }
+}
