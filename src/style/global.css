@@ -5,7 +5,7 @@
 @layer base {
   html {
     @apply full-screen text-gray-700;
-    @apply bg-white lg:bg-[#ffeeee] xl:bg-[#ffeeee];
+    @apply bg-white;
     font-family: "Pretendard", sans-serif, system-ui;
 
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
@@ -18,8 +18,7 @@
 
     #app {
       @apply full-screen;
-      @apply bg-white lg:bg-[#fff2f2] xl:bg-[#fff2f2];
-      background-image: url("/imgs/bg.png");
+      @apply bg-white;
       background-attachment: fixed;
       background-size: cover;
     }
