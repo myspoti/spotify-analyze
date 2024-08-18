@@ -1,4 +1,4 @@
-import "@/app/globals.css";
+import "@/style/global.css";
 import { Montserrat } from "next/font/google";
 import { NextAuthProvider } from "../providers/NextAuthProvider";
 
