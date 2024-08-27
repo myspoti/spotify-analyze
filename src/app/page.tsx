@@ -29,7 +29,11 @@ export default async function Home() {
     type: "tracks",
   }).then((data) => data.items)) as Track[];
 
-  console.log(allTimeTopTracks);
+  //profile
+  // 사용자 정보, 팔로우 목록, 상ㅟ
+
+  //rank => detail page
+  //song recommend
 
   return (
     <section className="flex flex-col items-start">
@@ -55,12 +59,11 @@ export default async function Home() {
               )}
               <h3 className="font-semibold truncate">{track.name}</h3>
             </div>
-
-            <PlayTrackButton
+            {/* <PlayTrackButton
               track={track}
               variant="filled"
               className="invisible w-12 h-12 text-3xl group/btn group-hover/item:visible"
-            />
+            /> */}
           </Link>
         ))}
         <h1 className="mt-16">Time Capsule</h1>

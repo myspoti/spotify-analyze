@@ -33,11 +33,11 @@ export default function TrackCards({ tracks }: Props) {
                     <Music className="w-full h-full bg-paper " />
                   </div>
                 )}
-                <PlayTrackButton
+                {/* <PlayTrackButton
                   track={track}
                   variant="filled"
                   className="absolute invisible w-12 h-12 text-3xl shadow-lg bottom-2 right-2 group/btn group-hover/item:visible"
-                />
+                /> */}
               </div>
               <h3 className="mt-5 font-bold truncate">{track.name}</h3>
               <h6 className="mt-1 text-xs font-semibold truncate text-gray">

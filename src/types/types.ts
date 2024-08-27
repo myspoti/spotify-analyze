@@ -14,6 +14,28 @@ export interface AuthSession extends Omit<DefaultSession, "user"> {
   user: AuthUser;
 }
 
+export interface MyProfile {
+  country: "string"; // 국가
+  display_name: "string"; //이름
+  email: "string";
+  followers: {
+    href: "string";
+    total: 0;
+  };
+  href: "string";
+  id: "string";
+  images: [
+    {
+      url: string;
+      height: number;
+      width: number;
+    }
+  ];
+  product: "string"; //구독 종류
+  type: "string";
+  uri: "string"; // 사용자 스포티파이 url
+}
+
 interface Image {
   height: number | null;
   url: string;

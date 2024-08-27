@@ -3,11 +3,20 @@ import {
   Artist,
   AuthSession,
   Category,
+  MyProfile,
   Playlist,
   Track,
   TrackAnalysis,
 } from "@/types/types";
 import { customGet } from "@/util/serverUtils";
+
+export const getMyProfile = async (
+  session: AuthSession
+): Promise<MyProfile> => {
+  return customGet("https://api.spotify.com/v1/me", session).then(
+    (data) => data
+  );
+};
 
 export const getNewReleases = async (
   session: AuthSession
