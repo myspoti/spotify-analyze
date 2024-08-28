@@ -7,14 +7,9 @@ import Link from "next/link";
 import { Album } from "lucide-react";
 import Image from "next/image";
 
-import PlayTrackButton from "@/components/PlayTrackButton";
-
 export default async function Home() {
   const session = await getAuthSession();
-
-  if (!session) {
-    redirect("/login");
-  }
+  if (!session) redirect("/login");
 
   const topTracks = (await getTopItems({
     session,

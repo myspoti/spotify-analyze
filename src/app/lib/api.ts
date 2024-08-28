@@ -10,9 +10,11 @@ import {
 } from "@/types/types";
 import { customGet } from "@/util/serverUtils";
 
-export const getMyProfile = async (
-  session: AuthSession
-): Promise<MyProfile> => {
+export const getMyProfile = async ({
+  session,
+}: {
+  session: AuthSession;
+}): Promise<MyProfile> => {
   return customGet("https://api.spotify.com/v1/me", session).then(
     (data) => data
   );
