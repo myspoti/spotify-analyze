@@ -4,6 +4,7 @@ import { Track } from "@/types/types";
 import { getAuthSession } from "@/util/serverUtils";
 import Profile from "@/components/Profile";
 import RankingSection from "@/components/RankingSection";
+import TrackRecommendations from "@/components/TrackRecommendations";
 
 export default async function Home() {
   const session = await getAuthSession();
@@ -43,6 +44,7 @@ export default async function Home() {
         monthTopTracks={monthTopTracks}
         weekTopTracks={weekTopTracks}
       />
+      {/* <TrackRecommendations trackId={""}/> */}
     </div>
   );
 }

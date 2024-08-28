@@ -1,13 +1,10 @@
 import { getTrackById } from "@/app/lib/api";
-import TrackRecommendations from "@/components/ TrackRecommendations";
+import TrackRecommendations from "@/components/TrackRecommendations";
 import PlayTrackButton from "@/components/PlayTrackButton";
-import { fmtMSS } from "@/util/dateUtils";
 import { getAuthSession } from "@/util/serverUtils";
-import { Dot, Music } from "lucide-react";
 import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { redirect } from "next/navigation";
+import DetailSong from "./_components/DetailSong";
 
 interface Props {
   params: {
@@ -30,62 +27,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function AlbumPage({ params }: Props) {
+export default async function DetailPage({ params }: Props) {
   const session = await getAuthSession();
+  if (!session) redirect("/login");
 
-  if (!session) {
-    redirect("/login");
-  }
   const trackId = params.trackId;
-  const track = await getTrackById(session, trackId);
+  const trackDetailData = await getTrackById(session, trackId);
 
   return (
     <>
-      <div className="flex items-end gap-6">
-        <>
-          {track.album.images && track.album.images.length > 0 ? (
-            <Image
-              src={track.album.images[0].url}
-              alt={track.album.name}
-              height={208}
-              width={208}
-              className="object-contain rounded-sm w-52 h-52"
-              priority
-            />
-          ) : (
-            <div className="w-full h-40">
-              <Music size={160} className="w-full h-full bg-paper " />
-            </div>
-          )}
-          <div className="flex flex-col gap-3">
-            <h5 className="text-xs font-bold uppercase">Song</h5>
-            <h2 className="text-5xl font-bold">{track.name}</h2>
-
-            <div className="flex items-center text-sm">
-              <Link
-                href={`/artists/${track.artists[0].id}`}
-                className="font-bold hover:underline"
-              >
-                {track.artists[0].name}
-              </Link>
-              <Dot />
-              <Link
-                href={`/albums/${track.album.id}`}
-                className="hover:underline"
-              >
-                {track.album.name}
-              </Link>
-              <Dot />
-              <span>{new Date(track.album.release_date).getFullYear()}</span>
-              <Dot />
-              <span>{fmtMSS(track.duration_ms)}</span>
-            </div>
-          </div>
-        </>
-      </div>
-
+      <DetailSong trackDetailData={trackDetailData} />
       <PlayTrackButton
-        track={track}
+        track={trackDetailData}
         variant="filled"
         className="mt-8 text-4xl h-14 w-14"
       />
