@@ -1,3 +1,5 @@
+"use client";
+
 import TrackCards from "@/components/TrackCards";
 import Link from "next/link";
 import { Album } from "lucide-react";
@@ -16,7 +18,7 @@ export default function RankingSection({
   yearTopTracks,
 }: IProps) {
   return (
-    <section className="flex flex-col items-start">
+    <section className="flex justify-between items-start">
       <h1 className="mt-8">Top Tracks</h1>
       <div className="grid w-full grid-cols-12 gap-4">
         {weekTopTracks.map((track) => (
@@ -46,7 +48,7 @@ export default function RankingSection({
         /> */}
           </Link>
         ))}
-        <h1 className="mt-16">Time Capsule</h1>
+        <h1 className="mt-16">year Capsule</h1>
         <div className="w-full flex">
           <TrackCards tracks={yearTopTracks} />
         </div>

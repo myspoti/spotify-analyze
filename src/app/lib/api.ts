@@ -239,11 +239,13 @@ export const getTrackAnalysis = async (
 
 export const getTrackRecommendations = async (
   session: AuthSession,
-  trackId: string
+  trackId: string,
+  trackFeatures?: TrackAnalysis
 ): Promise<Track[]> => {
   const trackAnalysis = await getTrackAnalysis(session, trackId);
 
-  const trackFeatures = {
+  const detault_trackFeatures = {
+    // trackFeature 을 조절할 수 있게(아래 카테코리 조사 후 params 로 넘겨받을 수 있게 변경) 오늘의 기분 상태의 따라서
     acousticness: 1,
     danceability: 1,
     energy: 1,
@@ -257,13 +259,15 @@ export const getTrackRecommendations = async (
     valence: 1,
   };
 
+  const trackFeaturesParams = trackFeatures ?? detault_trackFeatures;
+
   const track = await getTrackById(session, trackId);
   const artist = await getArtistById(session, track.artists[0].id);
 
   let endpoint = `https://api.spotify.com/v1/recommendations?limit=30&seed_artists=${artist.id}&seed_tracks=${trackId}`;
 
   Object.entries(trackAnalysis).forEach(([key, value]) => {
-    if (trackFeatures.hasOwnProperty(key)) {
+    if (trackFeaturesParams.hasOwnProperty(key)) {
       endpoint += `&target_${key}=${value}`;
     }
   });

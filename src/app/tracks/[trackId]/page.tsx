@@ -42,7 +42,6 @@ export default async function DetailPage({ params }: Props) {
         variant="filled"
         className="mt-8 text-4xl h-14 w-14"
       />
-
       <TrackRecommendations trackId={trackId} />
     </>
   );

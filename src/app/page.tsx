@@ -32,13 +32,14 @@ export default async function Home() {
 
   //profile
   // 사용자 정보, 팔로우 목록, 상ㅟ
+  // input 조절에따라서 추천 (곡,플리) 생성, 변경
 
   //rank => detail page
   //song recommend
 
   return (
     <div>
-      <Profile />
+      <Profile weekTopTrack={weekTopTracks[0]} />
       <RankingSection
         yearTopTracks={yearTopTracks}
         monthTopTracks={monthTopTracks}

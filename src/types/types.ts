@@ -124,7 +124,7 @@ export interface TrackAnalysis {
   key: number;
   liveness: number;
   loudness: number;
-  mode: 1 | 0;
+  mode: number; //0 | 1
   speechiness: number;
   tempo: number;
   valence: number;
