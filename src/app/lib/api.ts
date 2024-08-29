@@ -7,6 +7,7 @@ import {
   Playlist,
   Track,
   TrackAnalysis,
+  TrackFeatures,
 } from "@/types/types";
 import { customGet } from "@/util/serverUtils";
 
@@ -227,10 +228,10 @@ export const getTrackById = async (
   return customGet(`https://api.spotify.com/v1/tracks/${trackId}`, session);
 };
 
-export const getTrackAnalysis = async (
+export const getTrackFeatures = async (
   session: AuthSession,
   trackId: string
-): Promise<TrackAnalysis> => {
+): Promise<TrackFeatures> => {
   return customGet(
     `https://api.spotify.com/v1/audio-features/${trackId}`,
     session
@@ -240,9 +241,9 @@ export const getTrackAnalysis = async (
 export const getTrackRecommendations = async (
   session: AuthSession,
   trackId: string,
-  trackFeatures?: TrackAnalysis
+  trackFeatures?: TrackFeatures
 ): Promise<Track[]> => {
-  const trackAnalysis = await getTrackAnalysis(session, trackId);
+  const trackAnalysis = await getTrackFeatures(session, trackId);
 
   const detault_trackFeatures = {
     // trackFeature 을 조절할 수 있게(아래 카테코리 조사 후 params 로 넘겨받을 수 있게 변경) 오늘의 기분 상태의 따라서
@@ -275,4 +276,14 @@ export const getTrackRecommendations = async (
   const data = await customGet(endpoint, session);
 
   return data.tracks;
+};
+
+export const getTrackAudioAnalysis = async (
+  session: AuthSession,
+  trackId: string
+): Promise<TrackAnalysis> => {
+  return customGet(
+    `https://api.spotify.com/v1/audio-analysis/${trackId}`,
+    session
+  );
 };

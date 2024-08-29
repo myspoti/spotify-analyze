@@ -53,7 +53,8 @@ export default async function Profile({
         </Link>
         <div className="text-15">{profile.display_name}</div>
       </div>
-      <div></div>
+
+      {/* 추천 곡을 받고 그 곡에 대한 분석 */}
       <TrackCards tracks={recommendations} />
     </div>
   );
