@@ -137,7 +137,7 @@ export interface TrackAnalysis {
     detailed_status: string;
     status_code: number;
     timestamp: number;
-    analysis_time: number;
+    analysis_time: number; //분석하는데 걸린 시간
     input_process: string;
   };
   track: {
@@ -150,8 +150,8 @@ export interface TrackAnalysis {
     analysis_channels: number;
     end_of_fade_in: number;
     start_of_fade_out: number;
-    loudness: number;
-    tempo: number;
+    loudness: number; // 소리 크기
+    tempo: number; // 분당 비트수(BPM)
     tempo_confidence: number;
     time_signature: number;
     time_signature_confidence: number;
@@ -187,7 +187,7 @@ export interface TrackAnalysis {
       start: number;
       duration: number;
       confidence: number;
-      loudness: number;
+      loudness: number; //소리크기
       tempo: number;
       tempo_confidence: number;
       key: number;
