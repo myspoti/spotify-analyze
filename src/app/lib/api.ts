@@ -1,3 +1,4 @@
+import { GenreType } from "@/types/recommend";
 import {
   Album,
   Artist,
@@ -284,6 +285,15 @@ export const getTrackAudioAnalysis = async (
 ): Promise<TrackAnalysis> => {
   return customGet(
     `https://api.spotify.com/v1/audio-analysis/${trackId}`,
+    session
+  );
+};
+
+export const getGenreSeeds = async (
+  session: AuthSession
+): Promise<GenreType[]> => {
+  return customGet(
+    "https://api.spotify.com/recommendations/available-genre-seeds",
     session
   );
 };
