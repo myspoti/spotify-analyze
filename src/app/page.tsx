@@ -10,16 +10,17 @@ export default async function Home() {
   const session = await getAuthSession();
   if (!session) redirect("/login");
 
-  const weekTopTracks = (await getTopItems({
-    session,
-    limit: 10,
-    type: "tracks",
-  }).then((data) => data.items)) as Track[];
-
   const monthTopTracks = (await getTopItems({
     session,
     limit: 10,
-    timeRange: "중간", //중간값 필요
+    timeRange: "short_term",
+    type: "tracks",
+  }).then((data) => data.items)) as Track[];
+
+  const halfYearTopTracks = (await getTopItems({
+    session,
+    limit: 10,
+    timeRange: "medium_term",
     type: "tracks",
   }).then((data) => data.items)) as Track[];
 
@@ -39,11 +40,11 @@ export default async function Home() {
 
   return (
     <div>
-      <Profile weekTopTrack={weekTopTracks[0]} />
+      <Profile monthTopTrack={monthTopTracks[0]} />
       <RankingSection
         yearTopTracks={yearTopTracks}
         monthTopTracks={monthTopTracks}
-        weekTopTracks={weekTopTracks}
+        halfYearTopTracks={halfYearTopTracks}
       />
       {/* <TrackRecommendations trackId={""}/> */}
     </div>

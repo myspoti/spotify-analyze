@@ -7,21 +7,21 @@ import Image from "next/image";
 import { Track } from "@/types/types";
 
 interface IProps {
-  weekTopTracks: Track[];
+  halfYearTopTracks: Track[];
   monthTopTracks: Track[];
   yearTopTracks: Track[];
 }
 
 export default function RankingSection({
-  weekTopTracks,
   monthTopTracks,
   yearTopTracks,
+  halfYearTopTracks,
 }: IProps) {
   return (
     <section className="flex justify-between items-start">
       <h1 className="mt-8">Top Tracks</h1>
       <div className="grid w-full grid-cols-12 gap-4">
-        {weekTopTracks.map((track) => (
+        {monthTopTracks.map((track) => (
           <Link
             href={`/tracks/${track.id}`}
             key={track.id}

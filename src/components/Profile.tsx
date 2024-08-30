@@ -7,9 +7,9 @@ import Link from "next/link";
 import TrackCards from "./TrackCards";
 
 export default async function Profile({
-  weekTopTrack,
+  monthTopTrack,
 }: {
-  weekTopTrack: Track;
+  monthTopTrack: Track;
 }) {
   const session = await getAuthSession();
   if (!session) redirect("/login");
@@ -35,7 +35,7 @@ export default async function Profile({
 
   const recommendations = await getTrackRecommendations(
     session,
-    weekTopTrack.id,
+    monthTopTrack.id,
     trackFeatures
   );
 
