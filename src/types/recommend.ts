@@ -126,7 +126,7 @@ export type GenreType =
   | "work-out"
   | "world-music";
 
-export interface recommendationsParamsType {
+export interface RecommendationsParamsType {
   limit?: number;
   merket?: "KR";
   seed_artists: string;
@@ -153,7 +153,7 @@ export interface recommendationsParamsType {
   target_tempo?: number;
 }
 
-export interface recommendationsResponseType {
+export interface RecommendationsResponseType {
   seeds: [
     {
       afterFilteringSize: number; //필터링한 트랙 길이
@@ -191,9 +191,9 @@ export interface recommendationsResponseType {
         };
         type: "album";
         uri: string; //앨범의 spotify url ex(spotify:album:2up3OPMp9Tb4dAKM2erWXQ)
-        artists: artistType; //각 아티스트 개체에는 아티스트에 대한 자세한 정보에 대한 링크가 href에 포함되어 있습니다.
+        artists: ArtistType; //각 아티스트 개체에는 아티스트에 대한 자세한 정보에 대한 링크가 href에 포함되어 있습니다.
       };
-      artists: artistType; //각 아티스트 개체에는 아티스트에 대한 자세한 정보에 대한 링크가 href에 포함되어 있습니다.
+      artists: ArtistType; //각 아티스트 개체에는 아티스트에 대한 자세한 정보에 대한 링크가 href에 포함되어 있습니다.
       available_markets: string[]; //이용 가능한시장
       disc_number: number;
       duration_ms: number; //지속시간(ms)
@@ -225,7 +225,7 @@ export interface recommendationsResponseType {
   ];
 }
 
-interface artistType {
+interface ArtistType {
   external_urls: {
     spotify: string; //아티스트의 외부 url
   };

@@ -1,4 +1,4 @@
-import { GenreType } from "@/types/recommend";
+import { GenreType, RecommendationsResponseType } from "@/types/recommend";
 import {
   Album,
   Artist,
@@ -296,4 +296,10 @@ export const getGenreSeeds = async (
     "https://api.spotify.com/recommendations/available-genre-seeds",
     session
   );
+};
+
+export const getGetRecommendations = async (
+  session: AuthSession
+): Promise<RecommendationsResponseType> => {
+  return customGet("https://api.spotify.com/recommendations", session);
 };
