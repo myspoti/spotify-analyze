@@ -4,7 +4,7 @@ import { Track } from "@/types/types";
 import { getAuthSession } from "@/util/serverUtils";
 import Profile from "@/components/Profile";
 import RankingSection from "@/components/RankingSection";
-import TrackRecommendations from "@/components/TrackRecommendations";
+import TodayRecommend from "@/components/TodayRecommend";
 
 export default async function Home() {
   const session = await getAuthSession();
@@ -40,7 +40,8 @@ export default async function Home() {
 
   return (
     <div>
-      <Profile monthTopTrack={monthTopTracks[0]} />
+      <Profile />
+      <TodayRecommend monthTopTrack={monthTopTracks[0]} />
       <RankingSection
         yearTopTracks={yearTopTracks}
         monthTopTracks={monthTopTracks}

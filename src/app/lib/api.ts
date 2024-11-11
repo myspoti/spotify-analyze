@@ -301,5 +301,6 @@ export const getGenreSeeds = async (
 export const getGetRecommendations = async (
   session: AuthSession
 ): Promise<RecommendationsResponseType> => {
+  //params 추가
   return customGet("https://api.spotify.com/recommendations", session);
 };
