@@ -5,31 +5,32 @@ import { getAuthSession } from "@/util/serverUtils";
 import Profile from "@/components/Profile";
 import RankingSection from "@/components/RankingSection";
 import TodayRecommend from "@/components/TodayRecommend";
+import TrackRecommendations from "@/components/TrackRecommendations";
 
 export default async function Home() {
   const session = await getAuthSession();
   if (!session) redirect("/login");
 
-  const monthTopTracks = (await getTopItems({
+  const monthTopTracks = await getTopItems({
     session,
     limit: 10,
     timeRange: "short_term",
     type: "tracks",
-  }).then((data) => data.items)) as Track[];
+  }) as Track[];
 
-  const halfYearTopTracks = (await getTopItems({
+  const halfYearTopTracks = await getTopItems({
     session,
     limit: 10,
     timeRange: "medium_term",
     type: "tracks",
-  }).then((data) => data.items)) as Track[];
+  }) as Track[];  
 
-  const yearTopTracks = (await getTopItems({
+  const yearTopTracks = await getTopItems({
     session,
     limit: 10,
     timeRange: "long_term",
     type: "tracks",
-  }).then((data) => data.items)) as Track[];
+  }) as Track[];
 
   //profile
   // 사용자 정보, 팔로우 목록, 상ㅟ

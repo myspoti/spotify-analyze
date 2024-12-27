@@ -55,7 +55,7 @@ export const getTopItems = async ({
   return customGet(
     `https://api.spotify.com/v1/me/top/${type}?time_range=${timeRange}&limit=${limit}`,
     session
-  );
+  ).then(data => data.items);
 };
 
 export const getAlbumById = async (
@@ -274,9 +274,7 @@ export const getTrackRecommendations = async (
     }
   });
 
-  const data = await customGet(endpoint, session);
-
-  return data.tracks;
+return customGet(endpoint, session).then((data) => data);
 };
 
 export const getTrackAudioAnalysis = async (
